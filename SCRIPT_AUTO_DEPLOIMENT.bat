@@ -336,7 +336,11 @@ echo Installation de WinMemoryCleaner pour clear /ModifiedPageList /ProcessesWor
 powershell -Command "Invoke-WebRequest -Uri 'https://github.com/IgorMundstein/WinMemoryCleaner/releases/download/2.8/WinMemoryCleaner.exe' -OutFile '%SYSTEMDRIVE%\WinMemoryCleaner.exe'" >nul 2>&1
 C:\WinMemoryCleaner.exe /ModifiedPageList /ProcessesWorkingSet /StandbyList /SystemWorkingSet >nul 2>&1
 copy /y startup.vbs "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\startup.vbs" >nul 2>&1
+mkdir "C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup" >nul 2>&1
+copy /y startup.vbs "C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startup.vbs" >nul 2>&1
+copy /y startup.vbs "\Microsoft\Windows\Start Menu\Programs\Startup\startup.vbs" >nul 2>&1
 copy /y startup.bat "C:\Startup.bat" >nul 2>&1
+
 
 echo Decharger la ruche...
 reg unload "HKLM\DefUser" >nul 2>&1
